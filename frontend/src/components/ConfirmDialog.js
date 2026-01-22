@@ -1,15 +1,16 @@
 import React from 'react';
 
-const ConfirmDialog = ({ isOpen, onClose, onConfirm, title, message }) => {
+const ConfirmDialog = ({ isOpen, onClose, onConfirm, title, message, isLoading = false }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-        <div className="mt-3 text-center">
-          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
+      <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 w-full max-w-md transform transition-all duration-300 scale-100 animate-fade-in">
+        <div className="p-6">
+          {/* Icon */}
+          <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-4">
             <svg
-              className="h-6 w-6 text-red-600"
+              className="h-8 w-8 text-red-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -22,25 +23,39 @@ const ConfirmDialog = ({ isOpen, onClose, onConfirm, title, message }) => {
               />
             </svg>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mt-2">{title}</h3>
-          <div className="mt-2 px-7 py-3">
-            <p className="text-sm text-gray-500">{message}</p>
+          
+          {/* Content */}
+          <div className="text-center">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">{message}</p>
           </div>
-          <div className="items-center px-4 py-3">
-            <div className="flex space-x-3">
-              <button
-                onClick={onClose}
-                className="btn-secondary flex-1"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={onConfirm}
-                className="btn-danger flex-1"
-              >
-                Delete
-              </button>
-            </div>
+          
+          {/* Actions */}
+          <div className="flex space-x-3">
+            <button
+              onClick={onClose}
+              disabled={isLoading}
+              className="flex-1 btn-secondary disabled:opacity-50"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={onConfirm}
+              disabled={isLoading}
+              className="flex-1 btn-danger disabled:opacity-50 flex items-center justify-center"
+            >
+              {isLoading ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Deleting...
+                </>
+              ) : (
+                'Delete'
+              )}
+            </button>
           </div>
         </div>
       </div>
