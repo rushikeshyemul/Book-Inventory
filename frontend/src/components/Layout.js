@@ -79,13 +79,8 @@ const Layout = ({ children }) => {
         <div className="max-w-7xl mx-auto py-6 lg:py-8 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-gray-500 text-sm">
-              Built with ❤️ using React, Node.js, and MongoDB
+              @ {new Date().getFullYear()} Rushikesh Yemul. All rights reserved
             </p>
-            <div className="mt-2 flex justify-center space-x-4 text-xs text-gray-400">
-              <span>📚 {new Date().getFullYear()} BookVault</span>
-              <span>•</span>
-              <span>Inventory Management System</span>
-            </div>
           </div>
         </div>
       </footer>
