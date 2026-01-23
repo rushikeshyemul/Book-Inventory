@@ -231,5 +231,3 @@ This project is licensed under the MIT License.
 If you encounter any issues or have questions, please create an issue in the repository.
 
 ---
-
-**Built with ❤️ using React, Node.js, and MongoDB**
