@@ -95,9 +95,6 @@ const BookForm = ({ initialData, onSubmit, isLoading, submitText = 'Submit' }) =
                   min="1"
                   max="150"
                 />
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <span className="text-gray-400 text-sm">years</span>
-                </div>
               </div>
               {errors.authorAge && <p className="error-text">{errors.authorAge.message}</p>}
             </div>
@@ -159,11 +156,6 @@ const BookForm = ({ initialData, onSubmit, isLoading, submitText = 'Submit' }) =
                   className={`input-field ${errors.publishedDate ? 'border-red-300 focus:ring-red-500' : 'focus:ring-blue-500'}`}
                   max={new Date().toISOString().split('T')[0]}
                 />
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
               </div>
               {errors.publishedDate && <p className="error-text">{errors.publishedDate.message}</p>}
             </div>

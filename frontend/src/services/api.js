@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
-  baseURL: `${API_BASE_URL}/api`, // api base url
+  baseURL: `${API_BASE_URL}`, // base url ${API_BASE_URL}/api for dynamic
   headers: {
     'Content-Type': 'application/json',
   },
